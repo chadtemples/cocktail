@@ -6,7 +6,7 @@
   <title>Cocktail</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shafarik&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -99,9 +99,9 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 20;
-      font-family: 'Shafarik', serif;
+      font-family: 'Lora', serif;
       font-size: 24px;
-      font-weight: 400;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: rgba(255,255,255,0);
@@ -110,7 +110,9 @@
       white-space: nowrap;
     }
 
-    body.show-info #title { color: rgba(255,255,255,0.75); }
+    body.show-info #title {
+      color: rgba(255,255,255,0.75);
+    }
 
     /* Toggle switch */
     #info-btn {
@@ -147,6 +149,17 @@
   </style>
 </head>
 <body>
+
+<!-- Stamp filter for title text -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <filter id="stamp" x="-20%" y="-100%" width="140%" height="300%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+      <feGaussianBlur in="displaced" stdDeviation="0.5"/>
+    </filter>
+  </defs>
+</svg>
 
 <!-- Layer 1: soft blurred color blocks -->
 <div id="stage"></div>
